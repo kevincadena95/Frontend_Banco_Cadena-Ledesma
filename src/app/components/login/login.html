@@ -1,1 +1,27 @@
-<p>login works!</p>
+<div class="paginaLogin">
+
+    <div class="contenedorLogin">
+
+        <h2>INICIAR SESIÓN</h2>
+
+        <form [formGroup]="formularioLogin" (ngSubmit)="ingresar()">
+
+            <label>Usuario:</label>
+            <input formControlName="usuario" type="text" placeholder="Ingrese su usuario">
+
+            <label>Contraseña:</label>
+            <input formControlName="contraseña" type="password" placeholder="Ingrese su contraseña">
+
+            @if(errorLogin()){
+                <p class="error">Usuario o contraseña incorrectos</p>
+            }
+
+            <button type="submit">
+                Iniciar Sesión
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
