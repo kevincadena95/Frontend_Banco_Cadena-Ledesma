@@ -4,47 +4,100 @@
         <h2>Movimientos de Usuarios</h2>
     </div>
 
+    <div class="contenedorFormulario">
+        <h3>
+            @if (editando()) {Editar Movimiento}
+            @else {Nuevo Movimiento}
+        </h3>
+
+        <form [formGroup]="formularioMovimiento" (ngSubmit)="guardarMovimiento()">
+
+            <label>Usuario:</label>
+            <select formControlName="usuarioId">
+                <option [ngValue]="null">Seleccione un usuario</option>
+
+                @for (usuario of usuarios(); track usuario.id) {
+                    <option [ngValue]="usuario.id">
+                        {{ usuario.id }} - {{ usuario.nombre }}
+                    </option>
+                }
+            </select>
+
+            <label>Tipo:</label>
+            <select formControlName="tipo">
+                <option value="DEPOSITO">Depósito</option>
+                <option value="RETIRO">Retiro</option>
+            </select>
+
+            <label>Monto:</label>
+            <input type="number" formControlName="monto" placeholder="Ingrese el monto">
+
+            <label>Descripción:</label>
+            <input type="text" formControlName="descripcion" placeholder="Ingrese una descripción">
+
+            <button type="submit">
+                @if (editando()) {Actualizar Movimiento}
+                @else {Crear Movimiento}
+            </button>
+
+            @if (editando()) {
+                <button type="button" (click)="nuevoMovimiento()">Cancelar</button>
+            }
+
+        </form>
+    </div>
+
     @if (usuariosMovimientos().length > 0) {
 
     @for (grupo of usuariosMovimientos(); track grupo.usuario.id) {
 
     <div class="usuarioMovimientos">
-        
+
         <div class="datosUsuario">
             <h3>{{ grupo.usuario.nombre }}</h3>
             <p><strong>ID:</strong>{{ grupo.usuario.id }}</p>
             <p><strong>Correo:</strong>{{ grupo.usuario.email }}</p>
             <p><strong>Saldo:</strong>${{ grupo.usuario.saldo }}</p>
-            <p>
-                <strong>Total de movimientos:</strong>
-                {{ grupo.movimientos.length }}
-            </p>
+            <p><strong>Total de movimientos:</strong>{{ grupo.movimientos.length }}</p>
         </div>
 
         <div class="listaMovimientos">
 
             @for (movimiento of grupo.movimientos; track movimiento.id) {
+
             <div class="movimiento">
+
                 <div class="infoMovimiento">
                     <span class="descripcion">{{ movimiento.descripcion }}</span>
                     <span class="tipoMovimiento">{{ movimiento.tipo }}</span>
                 </div>
 
                 <div class="detalleMovimiento">
-
                     <strong>
                         @if (
                         movimiento.tipo === 'RETIRO' ||
                         movimiento.tipo === 'TRANSFERENCIA_ENVIADA'
-                        ) {- ${{ movimiento.monto }}} 
-                        @else
-                        {+ ${{ movimiento.monto }}}
+                        ) {- ${{ movimiento.monto }}}
+                        @else {+ ${{ movimiento.monto }}}
                     </strong>
-                    <span>
-                        {{ movimiento.fecha }}
-                    </span>
 
+                    <span>{{ movimiento.fecha }}</span>
                 </div>
+
+                @if (
+                movimiento.tipo === 'DEPOSITO' ||
+                movimiento.tipo === 'RETIRO'
+                ) {
+                <div class="accionesMovimiento">
+                    <button type="button" (click)="editarMovimiento(movimiento)">
+                        Editar
+                    </button>
+
+                    <button type="button" (click)="eliminarMovimiento(movimiento.id)">
+                        Eliminar
+                    </button>
+                </div>
+                }
             </div>
             }
         </div>

@@ -3,42 +3,134 @@
     <h2>MI CUENTA</h2>
 
     @if (usuarioAdmin()) {
-
-    <div class="datosUsuario">
-        <p><strong>Nombre:</strong>{{ usuarioAdmin().nombre }}</p>
-        <p><strong>Correo:</strong>{{ usuarioAdmin().email }}</p>
-        <p><strong>{{ usuarioAdmin().rol }}</strong></p>
-        
-    </div>
+        <div class="datosUsuario">
+            <p><strong>Nombre:</strong>{{ usuarioAdmin().nombre }}</p>
+            <p><strong>Correo:</strong>{{ usuarioAdmin().email }}</p>
+            <p><strong>Rol:</strong>{{ usuarioAdmin().rol }}</p>
+        </div>
     }
+
+    <h2>ADMINISTRAR USUARIOS</h2>
+
+    <div class="contenedorFormulario">
+
+        <form
+            [formGroup]="formularioUsuario"
+            (ngSubmit)="guardarUsuario()"
+        >
+
+            <label>Nombre:</label>
+
+            <input
+                type="text"
+                formControlName="nombre"
+                placeholder="Ingrese el nombre"
+            >
+
+            <label>Correo:</label>
+
+            <input
+                type="email"
+                formControlName="email"
+                placeholder="Ingrese el correo"
+            >
+
+            @if (!editando()) {
+
+                <label>Contraseña:</label>
+
+                <input
+                    type="password"
+                    formControlName="password"
+                    placeholder="Ingrese la contraseña"
+                >
+            }
+
+            <label>Rol:</label>
+
+            <select formControlName="rol">
+                <option value="CLIENTE">
+                    Cliente
+                </option>
+
+                <option value="ADMINISTRADOR">
+                    Administrador
+                </option>
+            </select>
+
+            <label>Saldo:</label>
+
+            <input
+                type="number"
+                formControlName="saldo"
+                placeholder="Ingrese el saldo"
+            >
+
+            <button type="submit">
+                @if (editando()) {
+                    Actualizar Usuario
+                } @else {
+                    Crear Usuario
+                }
+            </button>
+
+            @if (editando()) {
+                <button
+                    type="button"
+                    (click)="nuevoUsuario()"
+                >
+                    Cancelar
+                </button>
+            }
+        </form>
+    </div>
 
     <h2>USUARIOS REGISTRADOS</h2>
 
     @if (usuarios().length > 0) {
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Correo</th>
-                <th>Rol</th>
-                <th>Saldo</th>
-            </tr>
-        </thead>
-        <tbody>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Correo</th>
+                    <th>Rol</th>
+                    <th>Saldo</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
 
-            @for (usuario of usuarios(); track usuario.id) {
-            <tr>
-                <td>{{ usuario.id }}</td>
-                <td>{{ usuario.nombre }}</td>
-                <td>{{ usuario.email }}</td>
-                <td>{{ usuario.rol }}</td>
-                <td>${{ usuario.saldo }}</td>
-            </tr>
-            }
-        </tbody>
-    </table>
+                @for (usuario of usuarios(); track usuario.id) {
+                    <tr>
+                        <td>{{ usuario.id }}</td>
+                        <td>{{ usuario.nombre }}</td>
+                        <td>{{ usuario.email }}</td>
+                        <td>{{ usuario.rol }}</td>
+                        <td>${{ usuario.saldo }}</td>
+                        <td>
 
-    } @else {<p>No existen usuarios registrados.</p>}
+                            <button
+                                type="button"
+                                (click)="editarUsuario(usuario)"
+                            >
+                                Editar
+                            </button>
+
+                            <button
+                                type="button"
+                                (click)="eliminarUsuario(usuario.id)"
+                            >
+                                Eliminar
+                            </button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    } @else {
+        <p>No existen usuarios registrados.</p>
+    }
 
 </div>

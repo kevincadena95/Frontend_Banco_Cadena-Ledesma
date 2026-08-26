@@ -4,7 +4,6 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
     providedIn: 'root'
 })
-
 export class MovimientoService {
 
     private http = inject(HttpClient);
@@ -28,6 +27,29 @@ export class MovimientoService {
         return this.http.post(
             `${this.api}/transferencia`,
             datos,
+            {withCredentials: true}
+        );
+    }
+
+    crearMovimiento(movimiento: any) {
+        return this.http.post(
+            this.api,
+            movimiento,
+            {withCredentials: true}
+        );
+    }
+
+    actualizarMovimiento(id: number, movimiento: any) {
+        return this.http.put(
+            `${this.api}/${id}`,
+            movimiento,
+            {withCredentials: true}
+        );
+    }
+
+    eliminarMovimiento(id: number) {
+        return this.http.delete(
+            `${this.api}/${id}`,
             {withCredentials: true}
         );
     }
