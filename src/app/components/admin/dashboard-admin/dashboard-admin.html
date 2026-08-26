@@ -1,0 +1,44 @@
+<div class="paginaDashboard">
+
+    <h2>MI CUENTA</h2>
+
+    @if (usuarioAdmin()) {
+
+    <div class="datosUsuario">
+        <p><strong>Nombre:</strong>{{ usuarioAdmin().nombre }}</p>
+        <p><strong>Correo:</strong>{{ usuarioAdmin().email }}</p>
+        <p><strong>{{ usuarioAdmin().rol }}</strong></p>
+        
+    </div>
+    }
+
+    <h2>USUARIOS REGISTRADOS</h2>
+
+    @if (usuarios().length > 0) {
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Correo</th>
+                <th>Rol</th>
+                <th>Saldo</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @for (usuario of usuarios(); track usuario.id) {
+            <tr>
+                <td>{{ usuario.id }}</td>
+                <td>{{ usuario.nombre }}</td>
+                <td>{{ usuario.email }}</td>
+                <td>{{ usuario.rol }}</td>
+                <td>${{ usuario.saldo }}</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+
+    } @else {<p>No existen usuarios registrados.</p>}
+
+</div>

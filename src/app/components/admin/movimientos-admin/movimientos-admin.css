@@ -1,0 +1,199 @@
+.paginaMovimientos {
+    min-height: 70vh;
+    padding: 35px;
+    background: #f4f7f5;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.encabezadoMovimientos {
+    width: 100%;
+    max-width: 900px;
+    margin-bottom: 25px;
+}
+
+.encabezadoMovimientos h2 {
+    margin: 0;
+    color: #006400;
+    font-size: 25px;
+    font-weight: 700;
+}
+
+/* CONTENEDOR DE CADA USUARIO */
+
+.usuarioMovimientos {
+    width: 100%;
+    max-width: 900px;
+    margin-bottom: 30px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .08);
+    overflow: hidden;
+}
+
+/* DATOS DEL USUARIO */
+
+.datosUsuario {
+    padding: 20px 25px;
+    background: #edf6ef;
+    border-bottom: 1px solid #dce7df;
+}
+
+.datosUsuario h3 {
+    margin: 0 0 15px;
+    color: #006400;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.datosUsuario p {
+    margin: 7px 0;
+    color: #39443e;
+    font-size: 14px;
+}
+
+.datosUsuario strong {
+    color: #006400;
+    font-weight: 700;
+}
+
+/* LISTA DE MOVIMIENTOS */
+
+.listaMovimientos {
+    width: 100%;
+    background: #ffffff;
+}
+
+.movimiento {
+    min-height: 82px;
+    padding: 16px 20px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 15px;
+    border-bottom: 1px solid #edf0ee;
+    box-sizing: border-box;
+    transition: .2s;
+}
+
+.movimiento:last-child {
+    border-bottom: none;
+}
+
+.movimiento:hover {
+    background: #f3f8f4;
+}
+
+/* INFORMACIÓN DEL MOVIMIENTO */
+
+.infoMovimiento {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    min-width: 0;
+}
+
+.descripcion {
+    color: #39443e;
+    font-size: 15px;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.tipoMovimiento {
+    color: #7a8580;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+/* MONTO Y FECHA */
+
+.detalleMovimiento {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 5px;
+}
+
+.detalleMovimiento strong {
+    color: #006400;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.detalleMovimiento span {
+    color: #7a8580;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+/* CUANDO NO HAY MOVIMIENTOS */
+
+.sinMovimientos {
+    width: 100%;
+    max-width: 500px;
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 45px 25px;
+    box-sizing: border-box;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .06);
+}
+
+.sinMovimientos h3 {
+    margin: 0;
+    color: #006400;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+/* RESPONSIVE */
+
+@media(max-width: 600px) {
+
+    .paginaMovimientos {
+        padding: 20px 15px;
+    }
+
+    .encabezadoMovimientos h2 {
+        font-size: 22px;
+    }
+
+    .datosUsuario {
+        padding: 18px;
+    }
+
+    .datosUsuario h3 {
+        font-size: 18px;
+    }
+
+    .movimiento {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 15px;
+    }
+
+    .detalleMovimiento {
+        align-items: flex-start;
+    }
+
+    .descripcion {
+        font-size: 14px;
+    }
+
+    .tipoMovimiento {
+        font-size: 11px;
+    }
+
+    .detalleMovimiento strong {
+        font-size: 14px;
+    }
+
+    .detalleMovimiento span {
+        font-size: 11px;
+    }
+}

@@ -1,1 +1,60 @@
-<p>movimientos-admin works!</p>
+<div class="paginaMovimientos">
+
+    <div class="encabezadoMovimientos">
+        <h2>Movimientos de Usuarios</h2>
+    </div>
+
+    @if (usuariosMovimientos().length > 0) {
+
+    @for (grupo of usuariosMovimientos(); track grupo.usuario.id) {
+
+    <div class="usuarioMovimientos">
+        
+        <div class="datosUsuario">
+            <h3>{{ grupo.usuario.nombre }}</h3>
+            <p><strong>ID:</strong>{{ grupo.usuario.id }}</p>
+            <p><strong>Correo:</strong>{{ grupo.usuario.email }}</p>
+            <p><strong>Saldo:</strong>${{ grupo.usuario.saldo }}</p>
+            <p>
+                <strong>Total de movimientos:</strong>
+                {{ grupo.movimientos.length }}
+            </p>
+        </div>
+
+        <div class="listaMovimientos">
+
+            @for (movimiento of grupo.movimientos; track movimiento.id) {
+            <div class="movimiento">
+                <div class="infoMovimiento">
+                    <span class="descripcion">{{ movimiento.descripcion }}</span>
+                    <span class="tipoMovimiento">{{ movimiento.tipo }}</span>
+                </div>
+
+                <div class="detalleMovimiento">
+
+                    <strong>
+                        @if (
+                        movimiento.tipo === 'RETIRO' ||
+                        movimiento.tipo === 'TRANSFERENCIA_ENVIADA'
+                        ) {- ${{ movimiento.monto }}} 
+                        @else
+                        {+ ${{ movimiento.monto }}}
+                    </strong>
+                    <span>
+                        {{ movimiento.fecha }}
+                    </span>
+
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+    }
+
+    } @else {
+    <div class="sinMovimientos">
+        <h3>No existen movimientos registrados</h3>
+    </div>
+    }
+
+</div>
