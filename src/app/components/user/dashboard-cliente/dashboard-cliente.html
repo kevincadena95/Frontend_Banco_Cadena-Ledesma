@@ -1,1 +1,45 @@
-<p>dashboard-cliente works!</p>
+<div class="paginaCuenta">
+    @if (usuario) {
+
+    <div class="encabezadoCuenta">
+        <span class="textoCuenta">Datos de la cuenta</span>
+    </div>
+
+    <div class="informacionUsuario">
+        <div class="filaUsuario">
+            <span>Nombre:</span>
+            <strong>{{ usuario.nombre }}</strong>
+        </div>
+
+        <div class="filaUsuario">
+            <span>Correo:</span>
+            <strong>{{ usuario.email }}</strong>
+        </div>
+
+        <div class="filaUsuario">
+            <span>{{ usuario.rol }}</span>
+        </div>
+    </div>
+
+    <div class="bloqueSaldo">
+        <span class="etiquetaSaldo">Saldo disponible</span>
+        <div class="saldo">
+            <span>$</span>{{ usuario.saldo }}
+        </div>
+    </div>
+
+    <div class="accionesCuenta">
+        <button class="botonAccion">
+            <span class="iconoAccion">↔</span>
+            <span>Movimientos</span>
+        </button>
+
+        <button class="botonAccion">
+            <span class="iconoAccion">⇄</span>
+            <span>Depósitos y retiros</span>
+        </button>
+    </div>
+
+
+    }
+</div>
