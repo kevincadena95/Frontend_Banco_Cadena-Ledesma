@@ -1,1 +1,48 @@
-<p>movimientos-cliente works!</p>
+<div class="paginaMovimientos">
+    <div class="encabezadoMovimientos">
+        <h2>Movimientos</h2>
+    </div>
+
+    @if (movimientos().length > 0) {
+
+    <div class="fechaMovimientos">
+        <span>{{ movimientos()[0].fecha }}</span>
+    </div>
+
+    <div class="listaMovimientos">
+        @for (movimiento of movimientos(); track movimiento.id) {
+        <div class="movimiento">
+            <div class="infoMovimiento">
+                <span class="descripcion">
+                    {{ movimiento.descripcion }}
+                </span>
+                <span class="tipoMovimiento">
+                    {{ movimiento.tipo }}
+                </span>
+            </div>
+
+            <div class="detalleMovimiento">
+                <strong [class.salida]="movimiento.tipo === 'RETIRO' || movimiento.tipo === 'TRANSFERENCIA_ENVIADA'"
+                    [class.entrada]="movimiento.tipo === 'DEPOSITO' || movimiento.tipo === 'TRANSFERENCIA_RECIBIDA'">
+                    {{ movimiento.tipo === 'RETIRO' || movimiento.tipo === 'TRANSFERENCIA_ENVIADA' ? '- ' : '+ ' }}
+                    ${{ movimiento.monto }}
+                </strong>
+
+                <span class="saldoMovimiento">
+                    Fecha: {{ movimiento.fecha }}
+                </span>
+            </div>
+
+            <span class="flechaMovimiento"></span>
+        </div>
+        }
+    </div>
+
+    } @else {
+    <div class="sinMovimientos">
+        <div class="iconoSinMovimientos">↔</div>
+        <h3>No tienes movimientos</h3>
+        <p>Cuando realices una operación aparecerá aquí.</p>
+    </div>
+    }
+</div>

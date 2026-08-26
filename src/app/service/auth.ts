@@ -18,9 +18,7 @@ export class Auth {
                 email: email,
                 password: password
             },
-            {
-                withCredentials: true
-            }
+            {withCredentials: true}
         );
     }
 
@@ -28,18 +26,14 @@ export class Auth {
         return this.http.post(
             `${this.api}/logout`,
             {},
-            {
-                withCredentials: true
-            }
+            {withCredentials: true}
         );
     }
 
     perfil() {
         return this.http.get(
             `${this.api}/perfil`,
-            {
-                withCredentials: true
-            }
+            {withCredentials: true}
         );
     }
 }

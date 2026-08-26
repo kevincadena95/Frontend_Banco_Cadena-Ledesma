@@ -15,9 +15,10 @@ export const routes: Routes = [
 
     { path: 'dashboard', component: DashboardCliente, },
     { path: 'movimientos', component: MovimientosCliente, },
-    { path: 'movimientos-operacion', component: MovimientosFormCliente,  },
+    { path: 'depositos-retiros', component: MovimientosFormCliente,  },
 
-    
+    { path: 'dashboard-admin', component: DashboardCliente, },
+    { path: 'movimientos-admin', component: MovimientosAdmin, },
 
     { path: '**', redirectTo: 'login' }
 

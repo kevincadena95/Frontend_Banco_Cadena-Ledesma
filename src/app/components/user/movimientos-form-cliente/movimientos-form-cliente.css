@@ -1,0 +1,203 @@
+.paginaMovimiento {
+    min-height: 70vh;
+    padding: 35px;
+    background: #f4f7f5;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #343a36;
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.contenedorMovimiento {
+    width: 100%;
+    max-width: 850px;
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 30px 35px;
+    box-sizing: border-box;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+
+.contenedorMovimiento h2 {
+    margin: 0 0 25px;
+    text-align: center;
+    color: #006400;
+    font-size: 25px;
+    font-weight: 700;
+}
+
+/* =========================
+   INFORMACIÓN DEL USUARIO
+========================= */
+
+.informacionUsuario {
+    width: 100%;
+    margin-bottom: 25px;
+    padding: 16px 20px;
+    box-sizing: border-box;
+    background: #f1f3f2;
+    border: 1px solid #e2e6e3;
+    border-radius: 7px;
+}
+
+.filaUsuario {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 35px;
+}
+
+.filaUsuario+.filaUsuario {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #dfe3e0;
+}
+
+.filaUsuario span {
+    color: #707a74;
+    font-size: 13px;
+}
+
+.filaUsuario strong {
+    color: #343a36;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.separadorSeccion {
+    border: 0;
+    border-top: 1px solid #e5e8e6;
+    margin: 0 0 25px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+form label {
+    margin-top: 5px;
+    color: #343a36;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+form input,
+form select {
+    width: 100%;
+    padding: 12px 14px;
+    box-sizing: border-box;
+
+    border: 1px solid #d9dfdb;
+    border-radius: 7px;
+
+    background: #ffffff;
+    color: #343a36;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+form input::placeholder {
+    color: #8a938e;
+}
+
+form input:focus,
+form select:focus {
+    border-color: #006400;
+    box-shadow: 0 0 0 2px rgba(0, 100, 0, 0.08);
+}
+
+form select {
+    cursor: pointer;
+}
+
+
+form button {
+    align-self: center;
+    margin-top: 15px;
+    padding: 11px 28px;
+
+    border: none;
+    border-radius: 7px;
+
+    background: #006400;
+    color: #ffffff;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+}
+
+form button:hover {
+    background: #004d00;
+}
+
+form button:active {
+    transform: translateY(1px);
+}
+
+.error,
+.exito {
+    width: 100%;
+    box-sizing: border-box;
+    margin: 8px 0 0;
+    padding: 11px 13px;
+    border-radius: 7px;
+
+    font-size: 14px;
+    text-align: center;
+}
+
+.error {
+    background: #fdf2f2;
+    color: #a83232;
+    border: 1px solid #f1d1d1;
+}
+
+.exito {
+    background: #edf6f0;
+    color: #006400;
+    border: 1px solid #cfe2d5;
+}
+
+
+@media (max-width: 600px) {
+
+    .paginaMovimiento {
+        padding: 20px 15px;
+    }
+
+    .contenedorMovimiento {
+        padding: 22px 20px;
+    }
+
+    .contenedorMovimiento h2 {
+        font-size: 21px;
+        margin-bottom: 22px;
+    }
+
+    .filaUsuario {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 3px;
+    }
+
+    .filaUsuario+.filaUsuario {
+        margin-top: 12px;
+        padding-top: 12px;
+    }
+
+    form button {
+        width: 100%;
+    }
+}

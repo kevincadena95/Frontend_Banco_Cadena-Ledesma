@@ -1,0 +1,214 @@
+.paginaMovimientos {
+    min-height: 70vh;
+    padding: 35px;
+    background: #f4f7f5;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.encabezadoMovimientos {
+    width: 100%;
+    max-width: 850px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.encabezadoMovimientos h2 {
+    margin: 0;
+    color: #006400;
+    /* Alineado con verde principal */
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.fechaMovimientos {
+    width: 100%;
+    max-width: 850px;
+    margin-bottom: 10px;
+}
+
+.fechaMovimientos span {
+    color: #585858;
+    /* Mismo gris neutro de .dato span */
+    font-size: 13px;
+    font-weight: 600;
+    /* Letra más marcada */
+}
+
+.listaMovimientos {
+    width: 100%;
+    max-width: 850px;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .06);
+}
+
+.movimiento {
+    min-height: 82px;
+    padding: 16px 20px;
+    display: grid;
+    grid-template-columns: 1fr auto 20px;
+    align-items: center;
+    gap: 15px;
+    border-bottom: 1px solid #edf0ee;
+    /* Mismo borde de filaUsuario */
+    box-sizing: border-box;
+    transition: .2s;
+}
+
+.movimiento:last-child {
+    border-bottom: none;
+}
+
+.movimiento:hover {
+    background: #edf6ef;
+    /* Mismo tono hover de botonAccion */
+}
+
+.infoMovimiento {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    min-width: 0;
+}
+
+.descripcion {
+    color: #39443e;
+    /* Más oscuro y visible, alineado a textos principales */
+    font-size: 15px;
+    font-weight: 600;
+    /* Letra más marcada */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.tipoMovimiento {
+    color: #7a8580;
+    /* Alineado con labels secundarias de usuario */
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.detalleMovimiento {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 5px;
+}
+
+.detalleMovimiento strong {
+    font-size: 15px;
+    font-weight: 700;
+    /* Mayor contraste y peso */
+}
+
+.entrada {
+    color: #006400;
+    /* Verde institucional */
+}
+
+.salida {
+    color: #c0392b;
+    /* Rojo más sólido */
+}
+
+.saldoMovimiento {
+    color: #7a8580;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.flechaMovimiento {
+    color: #006400;
+    font-size: 22px;
+    font-weight: bold;
+    line-height: 1;
+}
+
+.sinMovimientos {
+    width: 100%;
+    max-width: 500px;
+    background: #fff;
+    border-radius: 12px;
+    padding: 45px 25px;
+    box-sizing: border-box;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .06);
+}
+
+.iconoSinMovimientos {
+    width: 55px;
+    height: 55px;
+    margin: 0 auto 15px;
+    border-radius: 9px;
+    /* Igual a iconoAccion */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #e3f0e7;
+    color: #006400;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.sinMovimientos h3 {
+    margin: 0 0 8px;
+    color: #006400;
+    /* Verde principal */
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.sinMovimientos p {
+    margin: 0;
+    color: #585858;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+@media(max-width: 600px) {
+    .paginaMovimientos {
+        padding: 20px 15px;
+    }
+
+    .encabezadoMovimientos {
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .encabezadoMovimientos h2 {
+        font-size: 22px;
+    }
+
+    .botonFechas {
+        font-size: 12px;
+    }
+
+    .movimiento {
+        grid-template-columns: 1fr auto 12px;
+        gap: 10px;
+        padding: 15px 12px;
+    }
+
+    .descripcion {
+        font-size: 14px;
+    }
+
+    .tipoMovimiento {
+        font-size: 11px;
+    }
+
+    .detalleMovimiento strong {
+        font-size: 14px;
+    }
+
+    .saldoMovimiento {
+        font-size: 11px;
+    }
+}

@@ -1,0 +1,122 @@
+.footer {
+    width: 100%;
+    background-color: #006400;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 40px;
+}
+
+.contenedor-footer {
+    width: 92%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px 0;
+
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 60px;
+}
+
+
+.informacion-banco h3 {
+    margin: 0 0 12px;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.informacion-banco p {
+    margin: 0;
+    max-width: 320px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+/* TÍTULOS */
+
+.contacto-footer h4,
+.enlaces-footer h4 {
+    margin: 0 0 16px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+
+.contacto-footer p {
+    margin: 8px 0;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.contacto-footer strong {
+    font-weight: 600;
+}
+
+.contacto-footer a {
+    color: white;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+.contacto-footer a:hover {
+    opacity: 0.75;
+}
+
+
+.enlaces-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.enlaces-footer a {
+    margin: 5px 0;
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s ease;
+}
+
+.enlaces-footer a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+.linea-footer {
+    width: 92%;
+    max-width: 1400px;
+    height: 1px;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.copyright-footer {
+    width: 92%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 18px 0;
+    text-align: center;
+}
+
+.copyright-footer p {
+    margin: 0;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+@media (max-width: 700px) {
+
+    .contenedor-footer {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 30px 0;
+    }
+
+    .informacion-banco p {
+        max-width: none;
+    }
+
+    .enlaces-footer {
+        align-items: flex-start;
+    }
+}

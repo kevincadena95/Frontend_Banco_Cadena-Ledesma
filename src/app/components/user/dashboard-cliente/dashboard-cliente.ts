@@ -1,8 +1,9 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { Auth } from '../../../service/auth';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
-  imports: [],
+  imports: [RouterLink],
   selector: 'app-dashboard-cliente',
   styleUrl: './dashboard-cliente.css',
   templateUrl: './dashboard-cliente.html',
@@ -10,13 +11,13 @@ import { Auth } from '../../../service/auth';
 export class DashboardCliente {
 
   private auth = inject(Auth);
-  usuario: any;
+  usuario = signal<any>(null);
 
   ngOnInit() {
     this.auth.perfil().subscribe({
       next: (datos) => {
         console.log('DATOS PERFIL:', datos);
-        this.usuario = datos;
+        this.usuario.set(datos);
       },
 
       error: (error) => {

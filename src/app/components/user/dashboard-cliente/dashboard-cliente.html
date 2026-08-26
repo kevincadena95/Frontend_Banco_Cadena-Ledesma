@@ -1,45 +1,49 @@
 <div class="paginaCuenta">
-    @if (usuario) {
-
+    
+    @if (usuario()) {
     <div class="encabezadoCuenta">
-        <span class="textoCuenta">Datos de la cuenta</span>
+        <span class="textoCuenta">DATOS DE LA CUENTA</span>
     </div>
 
     <div class="informacionUsuario">
         <div class="filaUsuario">
+            <span>ID:</span>
+            <strong>{{ usuario().id }}</strong>
+        </div>
+
+        <div class="filaUsuario">
             <span>Nombre:</span>
-            <strong>{{ usuario.nombre }}</strong>
+            <strong>{{ usuario().nombre }}</strong>
         </div>
 
         <div class="filaUsuario">
             <span>Correo:</span>
-            <strong>{{ usuario.email }}</strong>
+            <strong>{{ usuario().email }}</strong>
         </div>
 
         <div class="filaUsuario">
-            <span>{{ usuario.rol }}</span>
+            <span>{{ usuario().rol }}</span>
         </div>
     </div>
 
     <div class="bloqueSaldo">
         <span class="etiquetaSaldo">Saldo disponible</span>
         <div class="saldo">
-            <span>$</span>{{ usuario.saldo }}
+            <span>$</span>{{ usuario().saldo }}
         </div>
     </div>
 
     <div class="accionesCuenta">
-        <button class="botonAccion">
+        <a class="botonAccion" routerLink="/movimientos">
             <span class="iconoAccion">↔</span>
             <span>Movimientos</span>
-        </button>
+        </a>
 
-        <button class="botonAccion">
+        <a class="botonAccion" routerLink="/depositos-retiros">
             <span class="iconoAccion">⇄</span>
             <span>Depósitos y retiros</span>
-        </button>
+        </a>
     </div>
-
 
     }
 </div>
