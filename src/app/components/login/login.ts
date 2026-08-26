@@ -28,7 +28,6 @@ export class Login {
   });
 
   ingresar() {
-
     if (this.formularioLogin.invalid) {
       return;
     }

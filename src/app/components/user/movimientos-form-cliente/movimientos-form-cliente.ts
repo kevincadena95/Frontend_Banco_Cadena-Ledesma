@@ -53,7 +53,6 @@ export class MovimientosFormCliente {
       };
 
       this.movimientoService.retirar(movimiento).subscribe({
-
         next: () => {
           this.error.set('');
           this.mensaje.set('Retiro realizado correctamente');
@@ -64,23 +63,19 @@ export class MovimientosFormCliente {
             error.error?.error || 'No se pudo realizar el retiro'
           );
         }
-
       });
 
     }
 
     if (tipo === 'TRANSFERENCIA') {
-
       const transferencia = {
         usuarioDestinoId:
           this.formularioMovimiento.value.usuarioDestinoId,
-
         monto: monto,
         descripcion: descripcion
       };
 
       this.movimientoService.transferir(transferencia).subscribe({
-
         next: () => {
           this.error.set('');
           this.mensaje.set('Transferencia realizada correctamente');
@@ -91,11 +86,11 @@ export class MovimientosFormCliente {
             error.error?.error || 'No se pudo realizar la transferencia'
           );
         }
-
       });
-
     }
-
   }
 
+  nosPermiteSalir() {
+    return this.formularioMovimiento.dirty;
+  }
 }

@@ -5,7 +5,7 @@
         @if (usuario()) {
             <div class="datosUsuario">
                 <p><strong>Usuario:</strong> {{ usuario().nombre }}</p>
-                <p><strong>Saldo disponible:</strong> ${{ usuario().saldo }}</p>
+                <p><strong>Saldo Disponible:</strong> ${{ usuario().saldo }}</p>
             </div>
         }
 
@@ -14,49 +14,35 @@
             (ngSubmit)="realizarOperacion()"
         >
 
-            <label>Tipo de operación:</label>
-
+            <label>Tipo de Operación:</label>
             <select formControlName="tipo">
-                <option value="RETIRO">
-                    Retiro
-                </option>
-
-                <option value="TRANSFERENCIA">
-                    Transferencia
-                </option>
+                <option value="RETIRO">Retiro</option>
+                <option value="TRANSFERENCIA">Transferencia</option>
             </select>
 
 
             <label>Monto:</label>
-
             <input
                 formControlName="monto"
                 type="number"
                 placeholder="Ingrese el monto"
             >
 
-
             @if (formularioMovimiento.value.tipo === 'TRANSFERENCIA') {
-
                 <label>ID del usuario destinatario:</label>
-
                 <input
                     formControlName="usuarioDestinoId"
                     type="number"
                     placeholder="Ingrese el ID del usuario"
                 >
-
             }
 
-
             <label>Descripción:</label>
-
             <input
                 formControlName="descripcion"
                 type="text"
                 placeholder="Ingrese una descripción"
             >
-
 
             @if (error()) {
                 <p class="error">
@@ -64,20 +50,16 @@
                 </p>
             }
 
-
             @if (mensaje()) {
                 <p class="exito">
                     {{ mensaje() }}
                 </p>
             }
 
-
             <button type="submit">
                 Realizar Movimiento
             </button>
 
         </form>
-
     </div>
-
 </div>

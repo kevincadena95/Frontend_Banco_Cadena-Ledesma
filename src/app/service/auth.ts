@@ -7,17 +7,13 @@ import { HttpClient } from '@angular/common/http';
 export class Auth {
 
     private http = inject(HttpClient);
-
     private api = 'http://localhost:8080/api/auth';
 
     login(email: string, password: string) {
 
         return this.http.post(
             `${this.api}/login`,
-            {
-                email: email,
-                password: password
-            },
+            {email: email, password: password},
             {withCredentials: true}
         );
     }
