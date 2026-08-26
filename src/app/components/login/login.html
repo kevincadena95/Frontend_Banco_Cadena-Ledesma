@@ -6,14 +6,24 @@
 
         <form [formGroup]="formularioLogin" (ngSubmit)="ingresar()">
 
-            <label>Usuario:</label>
-            <input formControlName="usuario" type="text" placeholder="Ingrese su usuario">
+            <label>Correo electrónico:</label>
+
+            <input
+                formControlName="email"
+                type="email"
+                placeholder="Ingrese su correo electrónico"
+            >
 
             <label>Contraseña:</label>
-            <input formControlName="contraseña" type="password" placeholder="Ingrese su contraseña">
+
+            <input
+                formControlName="password"
+                type="password"
+                placeholder="Ingrese su contraseña"
+            >
 
             @if(errorLogin()){
-                <p class="error">Usuario o contraseña incorrectos</p>
+                <p class="error">Correo o contraseña incorrectos</p>
             }
 
             <button type="submit">

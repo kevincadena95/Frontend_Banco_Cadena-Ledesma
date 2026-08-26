@@ -1,31 +1,45 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
-    providedIn: 'root',
+    providedIn: 'root'
 })
 export class Auth {
 
-    private user = 'usuario';
-    private admin = 'admin';
-    private password = '12345';
+    private http = inject(HttpClient);
 
-    entrar(usuario: string, contraseña: string): boolean {
+    private api = 'http://localhost:8080/api/auth';
 
-        if ((this.user === usuario || this.admin === usuario) && this.password === contraseña) {
-            localStorage.setItem('userAuth', usuario)
-            return true;
-        } else {
-            return false;
-        }
+    login(email: string, password: string) {
+
+        return this.http.post(
+            `${this.api}/login`,
+            {
+                email: email,
+                password: password
+            },
+            {
+                withCredentials: true
+            }
+        );
     }
 
-
-    logut() {
-        return localStorage.removeItem('userAuth')
+    logout() {
+        return this.http.post(
+            `${this.api}/logout`,
+            {},
+            {
+                withCredentials: true
+            }
+        );
     }
 
-    estarLogeado(): boolean {
-        return localStorage.getItem('userAuth') !== null;
-
+    perfil() {
+        return this.http.get(
+            `${this.api}/perfil`,
+            {
+                withCredentials: true
+            }
+        );
     }
 }

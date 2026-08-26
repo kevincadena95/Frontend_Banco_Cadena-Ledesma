@@ -1,9 +1,12 @@
 import { Component, inject, signal } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  ReactiveFormsModule,
+  Validators
+} from '@angular/forms';
 
 import { Router } from '@angular/router';
 import { Auth } from '../../service/auth';
-
 
 @Component({
   selector: 'app-login',
@@ -16,26 +19,36 @@ export class Login {
   private fb = inject(FormBuilder);
   private auth = inject(Auth);
   private router = inject(Router);
+
   errorLogin = signal(false);
 
   formularioLogin = this.fb.group({
-    usuario: ['', Validators.required],
-    contraseña: ['', Validators.required],
-  })
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', Validators.required],
+  });
 
   ingresar() {
-    if (this.formularioLogin.valid) {
-      const user = this.formularioLogin.value.usuario;
-      const password = this.formularioLogin.value.contraseña;
 
-      const exito = this.auth.entrar(user!, password!);
+    if (this.formularioLogin.invalid) {
+      return;
+    }
 
-      if (exito) {
-        this.router.navigate(["mi-cuenta"]);
-      } else {
+    const email = this.formularioLogin.value.email!;
+    const password = this.formularioLogin.value.password!;
+
+    this.auth.login(email, password).subscribe({
+
+      next: (respuesta) => {
+        console.log('Login exitoso:', respuesta);
+        this.errorLogin.set(false);
+        this.router.navigate(['/dashboard']);
+      },
+      
+      error: (error) => {
+        console.error('Error en el login:', error);
         this.errorLogin.set(true);
       }
-    }
-  }
 
+    });
+  }
 }
