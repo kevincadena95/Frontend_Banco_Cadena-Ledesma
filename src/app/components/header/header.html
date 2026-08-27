@@ -2,28 +2,28 @@
     <div class="contenedor-header">
 
         <div class="marca">
-                <img src="https://i.postimg.cc/N0QbJThb/logoamazonasbanco.png" alt="Banco Amazonas">  
+                <img src="logo.png" alt="Banco Amazonas">
         </div>
 
         <nav class="navegacion">
-            <a routerLink="/login" routerLinkActive="activo">
-                Login
-            </a>
-            <a routerLink="/dashboard" routerLinkActive="activo">
-                Dashboard
-            </a>
-            <a routerLink="/movimientos" routerLinkActive="activo">
-                Movimientos
-            </a>
+            @if (!auth.sesionActiva()) {
+                <a routerLink="/login" routerLinkActive="activo">
+                    Login
+                </a>
+            }
 
-<!--            <a routerLink="/dashboard-admin" routerLinkActive="activo">
-                Dashboard Admin
-            </a>
+            @if (auth.sesionActiva()) {
+                <a routerLink="/dashboard" routerLinkActive="activo">
+                    Dashboard
+                </a>
+                <a routerLink="/movimientos" routerLinkActive="activo">
+                    Movimientos
+                </a>
 
-            <a routerLink="/movimientos-admin" routerLinkActive="activo">
-                Movimientos Admin
-            </a> -->
-
+                <button type="button" class="botonCerrarSesion" (click)="cerrarSesion()">
+                    Cerrar Sesión
+                </button>
+            }
         </nav>
     </div>
 

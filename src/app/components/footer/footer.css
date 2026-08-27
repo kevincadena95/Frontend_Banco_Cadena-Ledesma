@@ -18,10 +18,12 @@
 }
 
 
-.informacion-banco h3 {
+.logo-footer {
+    width: 160px;
+    height: auto;
+    object-fit: contain;
+    display: block;
     margin: 0 0 12px;
-    font-size: 24px;
-    font-weight: 600;
 }
 
 .informacion-banco p {

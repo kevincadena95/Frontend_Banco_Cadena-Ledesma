@@ -6,7 +6,7 @@
     @if (movimientos().length > 0) {
 
     <div class="fechaMovimientos">
-        <span>{{ movimientos()[0].fecha }}</span>
+        <span>{{ formatearFecha(movimientos()[0].fecha) }}</span>
     </div>
 
     <div class="listaMovimientos">
@@ -29,7 +29,7 @@
                 </strong>
 
                 <span class="saldoMovimiento">
-                    Fecha: {{ movimiento.fecha }}
+                    Fecha: {{ formatearFecha(movimiento.fecha) }}
                 </span>
             </div>
 

@@ -21,11 +21,16 @@ export class Login {
   private router = inject(Router);
 
   errorLogin = signal(false);
+  mostrarPassword = signal(false);
 
   formularioLogin = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
     password: ['', Validators.required],
   });
+
+  alternarPassword() {
+    this.mostrarPassword.update(valor => !valor);
+  }
 
   ingresar() {
     if (this.formularioLogin.invalid) {
@@ -40,6 +45,7 @@ export class Login {
       next: (respuesta) => {
         console.log('Login exitoso:', respuesta);
         this.errorLogin.set(false);
+        this.auth.sesionActiva.set(true);
         this.router.navigate(['/dashboard']);
       },
       

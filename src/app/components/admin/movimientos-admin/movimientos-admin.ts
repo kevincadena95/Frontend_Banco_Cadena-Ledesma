@@ -2,6 +2,7 @@ import { Component, inject, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MovimientoService } from '../../../service/movimiento-service';
 import { UsuarioService } from '../../../service/usuario-service';
+import { formatearFecha } from '../../../utils/formato';
 
 @Component({
   selector: 'app-movimientos-admin',
@@ -14,6 +15,7 @@ export class MovimientosAdmin {
   private movimientoService = inject(MovimientoService);
   private usuarioService = inject(UsuarioService);
   private fb = inject(FormBuilder);
+  formatearFecha = formatearFecha;
 
   usuariosMovimientos = signal<any[]>([]);
   usuarios = signal<any[]>([]);

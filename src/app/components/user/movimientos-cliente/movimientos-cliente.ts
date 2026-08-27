@@ -1,5 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
 import { MovimientoService } from '../../../service/movimiento-service';
+import { formatearFecha } from '../../../utils/formato';
 
 
 @Component({
@@ -12,6 +13,7 @@ export class MovimientosCliente {
 
   private movimientoService = inject(MovimientoService);
   movimientos = signal<any[]>([]);
+  formatearFecha = formatearFecha;
 
   ngOnInit() {
     this.obtenerMovimientos();
