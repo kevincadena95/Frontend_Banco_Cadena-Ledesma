@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 export class Auth {
 
     private http = inject(HttpClient);
-    private api = 'http://localhost:8080/api/auth';
+    private api = 'http://192.168.137.1:8080/api/auth';
 
     sesionActiva = signal(false);
 

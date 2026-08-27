@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 export class UsuarioService {
 
     private http = inject(HttpClient);
-    private api = 'http://localhost:8080/api/usuarios';
+    private api = 'http://192.168.137.1:8080/api/usuarios';
 
     obtenerUsuarios() {
         return this.http.get<any[]>(this.api, {

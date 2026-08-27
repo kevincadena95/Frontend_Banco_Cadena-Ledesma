@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 export class MovimientoService {
 
     private http = inject(HttpClient);
-    private api = 'http://localhost:8080/api/movimientos';
+    private api = 'http://192.168.137.1:8080/api/movimientos';
 
     obtenerMovimientos() {
         return this.http.get<any[]>(this.api, {
