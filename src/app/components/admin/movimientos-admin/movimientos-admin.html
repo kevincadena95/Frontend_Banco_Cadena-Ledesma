@@ -17,9 +17,9 @@
                 <option [ngValue]="null">Seleccione un usuario</option>
 
                 @for (usuario of usuarios(); track usuario.id) {
-                    <option [ngValue]="usuario.id">
-                        {{ usuario.id }} - {{ usuario.nombre }}
-                    </option>
+                <option [ngValue]="usuario.id">
+                    {{ usuario.id }} - {{ usuario.nombre }}
+                </option>
                 }
             </select>
 
@@ -41,7 +41,7 @@
             </button>
 
             @if (editando()) {
-                <button type="button" (click)="nuevoMovimiento()">Cancelar</button>
+            <button type="button" (click)="nuevoMovimiento()">Cancelar</button>
             }
 
         </form>
@@ -86,7 +86,9 @@
 
                 @if (
                 movimiento.tipo === 'DEPOSITO' ||
-                movimiento.tipo === 'RETIRO'
+                movimiento.tipo === 'RETIRO' ||
+                movimiento.tipo === 'TRANSFERENCIA_ENVIADA' ||
+                movimiento.tipo === 'TRANSFERENCIA_RECIBIDA'
                 ) {
                 <div class="accionesMovimiento">
                     <button type="button" (click)="editarMovimiento(movimiento)">
