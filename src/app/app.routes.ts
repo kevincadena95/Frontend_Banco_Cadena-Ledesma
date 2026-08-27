@@ -7,6 +7,7 @@ import { MovimientosAdmin } from './components/admin/movimientos-admin/movimient
 import { DashboardAdmin } from './components/admin/dashboard-admin/dashboard-admin';
 import { clienteMatchGuard } from './guards/cliente-match-guard';
 import { adminMatchGuard } from './guards/admin-match-guard';
+import { formGuard } from './guards/form-guard';
 
 export const routes: Routes = [
 
@@ -15,7 +16,7 @@ export const routes: Routes = [
 
     { path: 'dashboard', component: DashboardCliente, canMatch:[clienteMatchGuard] },
     { path: 'movimientos', component: MovimientosCliente, canMatch:[clienteMatchGuard]},
-    { path: 'depositos-retiros', component: MovimientosFormCliente, canMatch:[clienteMatchGuard] },
+    { path: 'depositos-retiros', component: MovimientosFormCliente, canMatch:[clienteMatchGuard], canDeactivate: [formGuard]},
 
     { path: 'dashboard', component: DashboardAdmin, canMatch:[adminMatchGuard] },
     { path: 'movimientos', component: MovimientosAdmin, canMatch:[adminMatchGuard]  },
